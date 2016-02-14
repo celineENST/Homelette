@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dinner planner</title>
+    <style type="text/css">
+    	header {
+		    background-color:#f0f0f0;
+		    padding:25px;	 
+		}
+		ul#menu li {
+    		display:inline;
+		}
+    </style>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+  </head>
+  <body>
+  	<header><h1>HOMELETTE <small>From the best chefs in the world directly into your kitchen</small></h1>
+  	</header>
+  	<div class="row" style="height:70px;background-color:#ffdc9d;">
+		<div id="myDinner" class="col-md-5" style="margin-left: 60px;"><h2>My Dinner: 4 people</h2></div>
+		<div id="view4" class="col-md-2 col-md-offset-4"><button id="goBackEdit" style="margin-top: 25px;">Go back and edit dinner</button></div>
+	</div>
+		<ul id="menu">
+		<figure>
+		  <li>
+		  		<img src="images/meatballs.jpg"/>
+		  		<figcaption>Meatballs</figcaption>
+		  </li>
+		  <li>
+		  		<img src="images/meatballs.jpg"/>
+		  		<figcaption>Meatballs</figcaption>
+		  </li>
+		</figure>
+		</ul> 
+	<!--<div class="container">
+		<h1>Dinner planner</h1>
+		<div id="exampleView">
+			<div>
+				Number of guests: <span id="numberOfGuests"></span>
+			</div>
+			<div>
+          <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+				<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+			</div>
+		</div>
+	</div>-->
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+	<!-- The application JavaScript code -->
+	<script src="js/app.js"></script>
+	<script src="js/model/dinnerModel.js"></script>
+	<script src="js/view/exampleView.js"></script>
+<!--	<script src="js/view/exampleViewController.js"></script> -->
+  </body>
+</html>
