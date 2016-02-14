@@ -5,13 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dinner planner</title>
+    <style type="text/css">
+    	header {
+		    background-color:#f0f0f0;
+		    padding:25px;	 
+		}
+    </style>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 
   </head>
   <body>
-	<div class="container">
+	<!--<div class="container">
 		<h1>Dinner planner</h1>
 		<div id="exampleView">
 			<div>
@@ -21,6 +27,54 @@
           <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
 				<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
 			</div>
+		</div>
+	</div>-->
+  	<header><h1>HOMELETTE <small>From the best chefs in the world directly into your kitchen</small></h1>
+  	</header>
+	<div class="row">
+		<div id="view2" class="col-md-3">View 2</div>
+		<div id="view4" class="col-md-9">
+			<div class="row">
+				<div id="selected_Dish" class="col-md-6">
+					<h2 id="dishName">LASAGNE</h2>
+					<img id="dishImage" src="images/toast.jpg" style="width:50%">
+					<p id="dishDescription">Dish description</p>
+					<button id="backToSelectDish">back to Select Dish</button>
+				</div>
+				<div id="ingredients" class="col-md-4">
+					<h3 id="ingredients_title">INGREDIENTS FOR <span id="numberOfGuests"></span> PEOPLE</h3>
+					<div class="table-responsive">
+					  <table class="table" style="width:100%">
+					      <tr>
+						    <td>2 tbsp</td>
+						    <td>olive oil</td>		
+						    <td>SEK</td>
+						    <td>0.20</td>
+						  </tr>
+						  <tr>
+						    <td>750g</td>
+						    <td>lean beef mince</td>		
+						    <td>SEK</td>
+						    <td>10.00</td>
+						  </tr>
+						  <tr>
+						    <td>90g</td>
+						    <td>pack rosciutto</td>		
+						    <td>SEK</td>
+						    <td>15.00</td>
+						  </tr>
+						  <tr>
+						  	<td><button id="confirmDish">Confirm Dish</button></td>
+						  	<td> </td>
+						  	<td>SEK</td>
+						  	<td>77.20</td>
+						  </tr>
+					  </table>
+					</div>
+				</div>
+			</div>
+			<h2>PREPARATION</h2>
+			<p id="preparationInstructions">Preparation instructions</p>
 		</div>
 	</div>
 
