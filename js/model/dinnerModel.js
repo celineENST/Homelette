@@ -132,7 +132,15 @@ var DinnerModel = function() {
 		}
 	}
 
-
+	// calculates the price for a specific dish
+	this.dishPrice = function(dish) {
+		var price = 0;
+		dish.ingredients.forEach(function(element,index,array){
+			price += element.price * element.quantity;
+		});
+		return Math.round(price);
+	}
+	
 	// the dishes variable contains an array of all the 
 	// dishes in the database. each dish has id, name, type,
 	// image (name of the image file), description and

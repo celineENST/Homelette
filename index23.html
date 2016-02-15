@@ -18,7 +18,7 @@
 		</h1>
   	</header>
 	
-<div class="container-fluid">
+<div class="container-fluid" id="exampleView">
 	
 	<div class="row">
 	
@@ -34,13 +34,15 @@
 							People:
 							<span class="dropdown">
 							<button class="btn btn-default dropdown-toggle" type="button" id="dropDownPeople" data-toggle="dropdown" style="min-width: 0px;">
-								<span id="#numberOfGuests"></span>
+								<span id="#numberOfGuests">5</span>
 								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" style="min-width: 0px;" aria-labelledby="dropdownPeople">
 								<li><a href="#">1</a></li>
 								<li><a href="#">2</a></li>
 								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
 							</ul>
 							</span>
 						</div>	
@@ -70,9 +72,9 @@
 									<td id="dessertName">Dessert name</td>
 									<td id="dessertPrice">0$</td>
 								</tr>
-								<tr id="totalPrice">
+								<tr>
 									<td>Total Price</td>
-									<td>0$</td>
+									<td id="totalPrice">0$</td>
 								</tr>
 							</table>
 						</div>
