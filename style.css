@@ -1,0 +1,34 @@
+header {
+	background-color:#f0f0f0;
+	padding:25px;	 
+	min-height: 20%;
+}
+
+ul#menu li {
+	display:block;
+}
+
+#selectedEntry, #selectedDish, #selectedDessert {
+	padding-top: .1em;
+	margin-top: .1em;
+	background-color: #f0f0f0;
+}
+
+#totalPrice {
+	font-weight: bold;
+}
+
+#searchTitle, #searchBar {
+	background-color: #ffdc9d;
+}
+
+#view2 {
+	border-right: 1px solid;
+	border-top: 1px solid;
+}
+
+#view3 {
+	border-top: 1px solid;
+	padding: 0;
+	margin: 0;
+}
