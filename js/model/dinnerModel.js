@@ -205,7 +205,7 @@ var DinnerModel = function() {
 			}]
 		},{
 		'id':3,
-		'name':'Baked Brie with Peaches',
+		'name':'Baked Brie',
 		'type':'starter',
 		'image':'bakedbrie.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
