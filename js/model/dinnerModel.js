@@ -4,7 +4,7 @@ var DinnerModel = function() {
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
 
-	var numberOfGuests = 0;
+	var numberOfGuests = 5;
 	var menu = [];
 
 	this.setNumberOfGuests = function(num) {
@@ -132,7 +132,15 @@ var DinnerModel = function() {
 		}
 	}
 
-
+	// calculates the price for a specific dish
+	this.dishPrice = function(dish) {
+		var price = 0;
+		dish.ingredients.forEach(function(element,index,array){
+			price += element.price * element.quantity;
+		});
+		return Math.round(price);
+	}
+	
 	// the dishes variable contains an array of all the 
 	// dishes in the database. each dish has id, name, type,
 	// image (name of the image file), description and
@@ -197,7 +205,7 @@ var DinnerModel = function() {
 			}]
 		},{
 		'id':3,
-		'name':'Baked Brie with Peaches',
+		'name':'Baked Brie',
 		'type':'starter',
 		'image':'bakedbrie.jpg',
 		'description':"Here is how you make it... Lore ipsum...",

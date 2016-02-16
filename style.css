@@ -1,0 +1,56 @@
+header {
+	background-color:#f0f0f0;
+	padding:25px;	 
+	min-height: 20%;
+}
+
+ul#menu li {
+	display:block;
+}
+
+ul#dishList {
+	margin: 1.5em;
+	padding: 0em;
+}
+ 
+ul#dishList li {
+	text-align: center;
+	padding: .2em;
+	margin: .5em;
+	display: inline-block;
+	width: 150px;
+	max-height: 205px;
+	min-height: 205px;
+	overflow: scroll;
+	border: 1px solid;
+}
+
+.dishListName {
+	background-color: #f0f0f0;
+	font-weight: bold;
+}
+
+#selectedEntry, #selectedDish, #selectedDessert {
+	padding-top: .1em;
+	margin-top: .1em;
+	background-color: #f0f0f0;
+}
+
+#totalPrice {
+	font-weight: bold;
+}
+
+#searchTitle, #searchBar {
+	background-color: #ffdc9d;
+}
+
+#view2 {
+	border-top: 1px solid;
+}
+
+#view3, #view4 {
+	border-top: 1px solid;
+	border-left: 1px solid;
+	padding: 0;
+	margin: 0;
+}
