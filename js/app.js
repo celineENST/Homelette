@@ -3,7 +3,7 @@ $(function() {
 	var model = new DinnerModel();
 
 	// Testing guests number
-	model.setNumberOfGuests(3);
+	model.setNumberOfGuests(5);
 //	console.log(model.getNumberOfGuests());
 		
 	// Testing adding dish
