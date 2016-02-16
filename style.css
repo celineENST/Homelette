@@ -22,7 +22,7 @@ html,body {
 	background-size: 100% 100%;
 }
 
-ul#dishList, ul#menuList li {
+ul#dishList li, ul#menuList li {
 	text-align: center;
 	padding: .2em;
 	margin: .5em;

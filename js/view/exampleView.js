@@ -37,7 +37,6 @@ var ExampleView = function (container,model) {
  // Result of search for dishes in view 3
  var liste="";
  
- 
  $.each(model.getAllDishes("starter"), function(index,element) {
  	liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
 	 + element.description + "</span></li>";
