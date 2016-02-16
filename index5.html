@@ -4,13 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="arrow.css"/>
     <style type="text/css">
     	header {
 		    background-color:#f0f0f0;
 		    padding:25px;	 
-		}
-		ul#menu li {
-    		display:inline;
 		}
     </style>
     <title>Dinner Overview</title>
@@ -18,32 +16,34 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" type="text/css" href="arrow.css"/>
 
   </head>
   <body>
   	<header><h1>HOMELETTE <small>From the best chefs in the world directly into your kitchen</small></h1>
   	</header>
-  	<div id="exampleView" class="container-fluid" style="height:70px;background-color:#ffdc9d;">
-		<div id="myDinner" class="col-md-5" style="margin-left: 60px;"><h2>My Dinner: <span id="numberOfGuests"></span> people</h2></div>
-		<div id="view5" class="col-md-2 col-md-offset-4"><button id="goBackEdit" class="btn btn-default" style="margin-top:20px;background-color:#ffba00;">Go back and edit dinner</button></div>
-	</div>
 
-	<div class="row">
-		<div id="menu" class="col-md-6" style="margin-top: 60px;">
-			<figure style="text-align:right;">
-		  		<img src="images/meatballs.jpg"/>
-		  		<figcaption>Meatballs</figcaption>
-		  		<p>77.20 SEK</p>
-			</figure>
-		</div>
-		<div id="totalPrice" class="col-md-2 col-md-offset-2" style="margin-top: 205px;">Total: 
-			<p>77.20 SEK</p>
-		</div>
-	</div>
+  	<div class="container-fluid" id="exampleView">
 
-	<div style="text-align:center;margin-top:100px;">
-		<button class="btn btn-default" style="background-color:#ffba00;">Print Full Recipe</button>
+	  	<div class="row" style="height:70px;background-color:#ffdc9d;">
+			<div id="myDinner" class="col-md-5" style="margin-left: 60px;"><h2>My Dinner: <span id="numberOfGuests"></span> people</h2></div>
+			<div id="view5" class="col-md-2 col-md-offset-4"><button id="goBackEdit" class="btn btn-default" style="margin-top:20px;background-color:#ffba00;">Go back and edit dinner</button></div>
+		</div>
+
+		<div class="row" style="margin-top:50px;">
+			<div class="col-md-8" style="text-align:right">
+				<ul id="menuList">
+				</ul>
+			</div>
+			<div id="totalPrice" class="col-md-2" style="margin-top: 205px;">Total: 
+				<p><span id="menuTotalPrice"></span> SEK</p>
+			</div>
+		</div>
+
+
+		<div style="text-align:center;margin-top:100px;">
+			<button class="btn btn-default" style="background-color:#ffba00;">Print Full Recipe</button>
+		</div>
+
 	</div>
 
     <!-- jQuery -->

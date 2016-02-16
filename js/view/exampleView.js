@@ -13,6 +13,8 @@ var ExampleView = function (container,model) {
  this.dishSelectedIngredients = container.find("#dishSelectedIngredients");
  this.dishSelectedTotalCost = container.find("#dishSelectedTotalCost");
  this.dishSelectedImage = container.find("#dishSelectedImage");
+ this.menuList = container.find("#menuList");
+ this.menuTotalPrice = container.find("#menuTotalPrice");
  
 // Displaying
 
@@ -64,10 +66,23 @@ var ExampleView = function (container,model) {
  
  tableau2 += "<tr id=\"totalPrice\"><td></td><td style=\"text-align: right;\">Total Price: </td><td>SEK </td><td style=\"text-align: right;\">" + model.dishPrice(model.getSelectedDish('main dish')) * model.getNumberOfGuests() + "</td></tr>"
  this.dishSelectedIngredients.html(tableau2);
+ console.log(tableau2);
 
  // View 4 Selected dish Image
  var im = "";
  im = "<img src=\"images/" + model.getSelectedDish('main dish').image + "\"></img>"; // Pas sûr 
  this.dishSelectedImage.html(im);
- 
+
+ //View 5
+ var liste2 = "";
+ var prix = 0;
+ model.getFullMenu().forEach(function(element,index,array) {
+ 	liste2 += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br />" 
+ 	+ model.dishPrice(element) + " SEK</li>";
+ 	prix +=model.dishPrice(element);
+ });
+ this.menuList.html(liste2);
+
+ prix = prix * model.getNumberOfGuests();
+ this.menuTotalPrice.html(prix);
 }

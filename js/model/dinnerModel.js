@@ -6,7 +6,6 @@ var DinnerModel = function() {
 
 	var numberOfGuests = 5;
 	var menu = [];
-	var selectedDish = {};
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 2
@@ -86,7 +85,7 @@ var DinnerModel = function() {
 		//TODO Lab 2
 		var price = 0;
 		this.getAllIngredients().forEach(function(element,index,array){
-			price += element.price * element.quantity * numberOfGuests;
+			price += element.price * numberOfGuests;
 		});
 		return price;
 	}

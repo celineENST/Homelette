@@ -8,12 +8,23 @@ ul#menu li {
 	display:block;
 }
 
-ul#dishList {
+ul#dishList, #menuList {
 	margin: 1.5em;
 	padding: 0em;
 }
  
 ul#dishList li {
+	text-align: center;
+	padding: .2em;
+	margin: .5em;
+	display: inline-block;
+	width: 150px;
+	max-height: 205px;
+	min-height: 205px;
+	overflow: scroll;
+	border: 1px solid;
+}
+ul#menuList li {
 	text-align: center;
 	padding: .2em;
 	margin: .5em;
