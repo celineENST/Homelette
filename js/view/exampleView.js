@@ -1,19 +1,5 @@
 //ExampleView Object constructor
-<<<<<<< HEAD
-var ExampleView = function (container) {
-	
-	// Get all the relevant elements of the view (ones that show data
-  	// and/or ones that responed to interaction)
-	this.numberOfGuests = container.find("#numberOfGuests");
-	this.plusButton = container.find("#plusGuest");
-	this.minusButton = container.find("#minusGuest");
-	
-	this.numberOfGuests.html("4");
-	
-}
-=======
 var ExampleView = function (container,model) {
->>>>>>> 39087e9930b4cf77f46e943a71b9fa08398de0c9
  
 // Get all the relevant elements of the view (ones that show data
 // and/or ones that responded to interaction)
@@ -22,11 +8,20 @@ var ExampleView = function (container,model) {
  this.minusButton = container.find("#minusGuest");
  this.dishCart = container.find("#dishCart");
  this.dishList = container.find("#dishList");
+ this.dishSelected = container.find("#dishSelected");
+ this.dishSelectedDescription = container.find("#dishSelectedDescription");
+ this.dishSelectedIngredients = container.find("#dishSelectedIngredients");
+ this.dishSelectedTotalCost = container.find("#dishSelectedTotalCost");
+ this.dishSelectedImage = container.find("#dishSelectedImage");
  
 // Displaying
 
  // Number of guests
  this.numberOfGuests.html(model.getNumberOfGuests());
+
+ // Dish selected
+ this.dishSelected.html(model.getSelectedDish('main dish').name); // Pas sûr
+ this.dishSelectedDescription.html(model.getSelectedDish('main dish').description); // Pas sûr
  
  // Table of dishes in view 2 (dish cart table)
  var tableau = "";
@@ -57,5 +52,22 @@ var ExampleView = function (container,model) {
  });
  
  this.dishList.html(liste);
+
+ // Table of ingredients in view 4 (selected dish ingredients)
+ var tableau2 = "";
+ model.getSelectedDishIngredients().forEach(function(element,index,array) {
+ 	tableau2 += "<tr><td style=\"text-align: right;\">" + Math.round(element.quantity * model.getNumberOfGuests()) + element.unit +"</td><td style=\"text-align: left;\">" 
+ 	+ element.name + "</td><td style=\"text-align: left;\">" 
+ 	+ " SEK</td><td style=\"text-align: right;\">" 
+ 	+ element.price* model.getNumberOfGuests() +"</td></tr>";
+ });
+ 
+ tableau2 += "<tr id=\"totalPrice\"><td></td><td style=\"text-align: right;\">Total Price: </td><td>SEK </td><td style=\"text-align: right;\">" + model.dishPrice(model.getSelectedDish('main dish')) * model.getNumberOfGuests() + "</td></tr>"
+ this.dishSelectedIngredients.html(tableau2);
+
+ // View 4 Selected dish Image
+ var im = "";
+ im = "<img src=\"images/" + model.getSelectedDish('main dish').image + "\"></img>"; // Pas sûr 
+ this.dishSelectedImage.html(im);
  
 }

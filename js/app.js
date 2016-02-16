@@ -12,6 +12,9 @@ $(function() {
 	model.addDishToMenu(201);
 	model.addDishToMenu(200);
 	model.addDishToMenu(202);
+
+	//Testing selected dish
+	model.getSelectedDish('main dish');
 		
 	// Testing visualizing selected dish
 //	console.log(model.getSelectedDish('starter'));

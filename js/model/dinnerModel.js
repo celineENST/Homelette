@@ -6,6 +6,7 @@ var DinnerModel = function() {
 
 	var numberOfGuests = 5;
 	var menu = [];
+	var selectedDish = {};
 
 	this.setNumberOfGuests = function(num) {
 		//TODO Lab 2
@@ -21,7 +22,7 @@ var DinnerModel = function() {
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
 		//TODO Lab 2
-		var selectedDish = {};
+		selectedDish = {};
 		menu.forEach(function(element,index,array){
 			if (element.type == type) {
 				selectedDish = element;		//We only have one dish of each type in a menu
@@ -57,6 +58,28 @@ var DinnerModel = function() {
 		});
 		return ingredientsList;
 	}
+
+	//Returns all ingredients for the dish selected
+	this.getSelectedDishIngredients = function() {
+		//TODO Lab 2
+		var ingredientsList = [];
+		var ingredientsName = [];
+		
+			for (var i = 0 ; i < selectedDish.ingredients.length ; i++) {
+				
+				var currentIngredient = selectedDish.ingredients[i];
+				var found = $.inArray(currentIngredient.name,ingredientsName);		//If already in list, returns the index. Else, returns -1
+				
+				if (found==-1) {		//If not already in list, then add the whole ingredient element
+					ingredientsName.push(currentIngredient.name);
+					ingredientsList.push(selectedDish.ingredients[i]);
+				} else {		//If already in list; only add value to the quantity
+					ingredientsList[found].quantity += currentIngredient.quantity;
+				}
+			}
+		return ingredientsList;
+	}
+
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
@@ -136,7 +159,7 @@ var DinnerModel = function() {
 	this.dishPrice = function(dish) {
 		var price = 0;
 		dish.ingredients.forEach(function(element,index,array){
-			price += element.price * element.quantity;
+			price += element.price;
 		});
 		return Math.round(price);
 	}
