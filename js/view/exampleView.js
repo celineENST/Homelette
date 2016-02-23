@@ -15,6 +15,7 @@ var ExampleView = function (container,model) {
  this.dishSelectedImage = container.find("#dishSelectedImage");
  this.menuList = container.find("#menuList");
  this.menuTotalPrice = container.find("#menuTotalPrice");
+ this.finalMenu = container.find("#finalMenu");
  
 // Displaying
 
@@ -83,4 +84,17 @@ var ExampleView = function (container,model) {
 
  prix = prix * model.getNumberOfGuests();
  this.menuTotalPrice.html(prix);
+
+
+ //View 6
+ var liste3 = "";
+ model.getFullMenu().forEach(function(element,index,array) {
+ 	liste3 += "<div class=\"col-md-2\" style=\"margin-left:100px;\"><img src=\"images/" + element.image + "\"></img></div>"
+ 				+ "<div class=\"col-md-3\"><h2>" + element.name + "</h2><br /> Dish description" + "</div>"
+ 				+ "<div class=\"col-md-5\" style=\"margin-bottom:50px;\"><h3>Preparation</h3><br />" + element.description + "</div>";
+ });
+
+ this.finalMenu.html(liste3);
+
+
 }
