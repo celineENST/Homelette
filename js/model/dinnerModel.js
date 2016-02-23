@@ -1,30 +1,24 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
  
-	//TODO Lab 2 implement the data structure that will hold number of guest
-	// and selected dinner options for dinner menu
-
 	var numberOfGuests = 5;
 	var menu = [];
 
 	this.setNumberOfGuests = function(num) {
-		//TODO Lab 2
 		numberOfGuests = num;
 	}
 
 	// should return 
 	this.getNumberOfGuests = function() {
-		//TODO Lab 2
 		return numberOfGuests;
 	}
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-		//TODO Lab 2
 		selectedDish = {};
 		menu.forEach(function(element,index,array){
 			if (element.type == type) {
-				selectedDish = element;		//We only have one dish of each type in a menu
+				selectedDish = element;	
 			}
 		});
 		return selectedDish;
@@ -32,13 +26,12 @@ var DinnerModel = function() {
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		//TODO Lab 2
 		return menu;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
+	// Do it again
 	this.getAllIngredients = function() {
-		//TODO Lab 2
 		var ingredientsList = [];
 		var ingredientsName = [];
 		menu.forEach(function(element,index,array){
@@ -60,7 +53,6 @@ var DinnerModel = function() {
 
 	//Returns all ingredients for the dish selected
 	this.getSelectedDishIngredients = function() {
-		//TODO Lab 2
 		var ingredientsList = [];
 		var ingredientsName = [];
 		
@@ -82,7 +74,6 @@ var DinnerModel = function() {
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-		//TODO Lab 2
 		var price = 0;
 		this.getAllIngredients().forEach(function(element,index,array){
 			price += element.price * numberOfGuests;
@@ -93,7 +84,6 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		//TODO Lab 2 
 		var currentDish = {};
 		var replaced = false;
 		dishes.forEach(function(element,index,array){	//Fetching the current dish by its id
@@ -113,7 +103,6 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		//TODO Lab 2
 		var currentDish = {};
 		dishes.forEach(function(element,index,array){	//Fetching the current dish by its id
 			if (element.id == id) {
@@ -145,6 +134,7 @@ var DinnerModel = function() {
 	  });	
 	}
 
+	// By the lab
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
 	  for(key in dishes){
@@ -154,6 +144,7 @@ var DinnerModel = function() {
 		}
 	}
 
+	// Added by us
 	// calculates the price for a specific dish
 	this.dishPrice = function(dish) {
 		var price = 0;
