@@ -65,7 +65,6 @@ var ExampleView = function (container,model) {
  
  tableau2 += "<tr id=\"totalPrice\"><td></td><td style=\"text-align: right;\">Total Price: </td><td>SEK </td><td style=\"text-align: right;\">" + model.dishPrice(model.getSelectedDish('main dish')) * model.getNumberOfGuests() + "</td></tr>"
  this.dishSelectedIngredients.html(tableau2);
- console.log(tableau2);
 
  // View 4 Selected dish Image
  var im = "";

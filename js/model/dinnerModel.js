@@ -3,9 +3,11 @@ var DinnerModel = function() {
  
 	var numberOfGuests = 5;
 	var menu = [];
+	var observables = [];
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;
+		this.notifyObservers(num);
 	}
 
 	// should return 
@@ -15,7 +17,7 @@ var DinnerModel = function() {
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-		selectedDish = {};
+		selectedDish = {};	// Global - Trois types
 		menu.forEach(function(element,index,array){
 			if (element.type == type) {
 				selectedDish = element;	
@@ -86,11 +88,7 @@ var DinnerModel = function() {
 	this.addDishToMenu = function(id) {
 		var currentDish = {};
 		var replaced = false;
-		dishes.forEach(function(element,index,array){	//Fetching the current dish by its id
-			if (element.id == id) {
-				currentDish = element;
-			}		
-		});
+		currentDish = this.getDish(id);
 		menu.forEach(function(element,index,array) {		//If we already have that type of dish in the menu, we replace the old with the new 
 			if (element.type == currentDish.type) {
 				menu[index] = currentDish;
@@ -99,6 +97,7 @@ var DinnerModel = function() {
 		});
 		if (!replaced) 
 			menu.push(currentDish);		//If we don't, we add the new dish at the bottom of menu.
+		this.notifyObservers(currentDish);
 	}
 
 	//Removes dish from menu
@@ -109,7 +108,8 @@ var DinnerModel = function() {
 				currentDish = element;
 			}		
 		});
-		menu.splice($.inArray(currentDish,menu),1);		
+		menu.splice($.inArray(currentDish,menu),1);	
+		this.notifyObservers(currentDish);	
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -404,5 +404,17 @@ var DinnerModel = function() {
 			}]
 		}
 	];
+	
+	// Observable Pattern for LAB3
+	
+	this.addObserver = function(observer) {
+		this.observables.push(observer);
+	}
+	
+	this.notifyObservers = function(args) {
+		/*this.observables.forEach(function(element,index,array) {
+			element(this,args);
+		});*/
+	}
 
 }
