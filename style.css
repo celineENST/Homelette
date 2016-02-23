@@ -1,3 +1,12 @@
+#view1{
+	height: 100%;
+	background: url(images/bg.jpg);
+	background-size: 100% 100%;
+}
+
+#exampleView{
+	height:100%;
+}
 header {
 	background-color:#f0f0f0;
 	padding:25px;	 
@@ -15,11 +24,6 @@ ul#dishList, #menuList {
  
 html,body {
 	height: 100%;
-}
-.wholePage {
-	height: 100%;
-	background: url(images/bg.jpg);
-	background-size: 100% 100%;
 }
 
 ul#dishList li, ul#menuList li {

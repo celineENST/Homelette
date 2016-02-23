@@ -3,7 +3,7 @@ var DinnerModel = function() {
  
 	var numberOfGuests = 5;
 	var menu = [];
-	var observables = [];
+	var observables = [];	// Liste de vues
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;

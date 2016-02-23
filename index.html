@@ -13,40 +13,214 @@
   </head>
   <body>
 	  
-<div class="wholePage">
-  	<header style="opacity: 0.5; background-color: #ffdc9d;">
-		<h1>HOMELETTE 
-			<small>From the best chefs in the world directly into your kitchen</small>
-		</h1>
-  	</header>
-	
-	<div class="container-fluid">
-		<div class="row" style="margin-top: 6em;">
-			<div class="col-md-7" style="background-color: #FFFFFF; opacity: 0.7; padding: 2em;">
-				
-				<div class="container-fluid">
-					<div class="row" style="border-bottom: 2px solid;">
-						<h3>A HOME DINNER SERVICE</h3>
-					</div>
-					<div class="row" style="margin-top: 1em;">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-						incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-						ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-						in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-					</div>
-					<div class="row" style="margin-top: 2em;">
-						Start quickly
-					</div>
-					<div class="row" style="margin-top: 3em;">
-						<button type="submit" id="createButton" class="btn btn default"> Create new dinner </button>
+<div id="exampleView">
+	<div id="view1" style="display:none;">
+	  	<header style="opacity: 0.5; background-color: #ffdc9d;">
+			<h1>HOMELETTE 
+				<small>From the best chefs in the world directly into your kitchen</small>
+			</h1>
+	  	</header>
+		<div class="container-fluid">
+			<div class="row" tyle="margin-top: 6em; display:none">
+				<div class="col-md-7" style="background-color: #FFFFFF; opacity: 0.7; padding: 2em;">
+					<div class="container-fluid">
+						<div class="row" style="border-bottom: 2px solid;">
+							<h3>A HOME DINNER SERVICE</h3>
+						</div>
+						<div class="row" style="margin-top: 1em;">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+							incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+							ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
+							in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+							non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+						</div>
+						<div class="row" style="margin-top: 2em;">
+							Start quickly
+						</div>
+						<div class="row" style="margin-top: 3em;">
+							<button type="submit" id="createButton" class="btn btn default"> Create new dinner </button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<div style="display:true;">
+	  	<header><h1>HOMELETTE <small>From the best chefs in the world directly into your kitchen</small></h1>
+	  	</header>
+		<div class="container-fluid">
+			<div class="row">
+				<div id="view2" style="display:none;" class="col-md-3">
+			
+						<div class="container-fluid">
+							<div class="row">
+								<h2>My dinner</h2>
+							</div>
+			
+							<div class="row" style="padding-bottom: .9em;">
+								<div class="col-md-12">
+									People:
+									<span class="dropdown">
+									<button class="btn btn-default dropdown-toggle" type="button" id="dropDownPeople" data-toggle="dropdown" 
+									style="min-width: 0px;">
+										<span id="numberOfGuests">5</span>
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" style="min-width: 0px;" aria-labelledby="dropdownPeople">
+										<li><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">4</a></li>
+										<li><a href="#">5</a></li>
+										<li><a href="#">6</a></li>
+										<li><a href="#">7</a></li>
+										<li><a href="#">8</a></li>
+										<li><a href="#">9</a></li>
+										<li><a href="#">10</a></li>
+									</ul>
+									</span>
+								</div>	
+							</div>
+			
+							<div class="row" id="listTitle" style="background-color: #d1d1d1;">
+								<div class="col-md-9">
+									Dish Name
+								</div>
+								<div class="col-md-3">
+									Price
+								</div>
+							</div>
+			
+							<div class="row" style="padding-bottom: .9em;">
+								<div class="table-responsive" style="width:100%; height: 100%;">
+									<table class="table" id="dishCart" style="width:100%; height:100%; margin: 0; padding: 0;">
+									</table>
+								</div>
+							</div>
+			
+							<div class="row" style="text-align: right;">
+						           <button type="submit" id="confirm" class="btn btn default"> Confirm </button>
 
+							</div>
+						</div>
+			
+				</div>
+				<div id="view3" style="display:none;" class="col-md-9">
+			
+					<div class="container-fluid">
+							
+						<div class="row" id="searchTitle">
+							<div class="col-md-12">
+								<h2>Select Dish</h2>
+							</div>
+						</div>
+				
+						<div class="row" id="searchBar" style="padding-bottom: 2em;">
+							<div class="col-lg-8">
+								<div class="input-group">
+									<div class="input-group-btn">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" 
+									aria-haspopup="true" aria-expanded="false" style="min-width: 7em; text-align: right;" id="typeInput">
+										All <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" style="min-width: 7em; text-align: right;">
+										<li><a href="#">Starter</a></li>
+										<li><a href="#">Dish</a></li>
+										<li><a href="#">Dessert</a></li>
+									</ul>
+									</div>
+								<input type="text" class="form-control" id="searchInput">
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<button type="submit" id="searchButton" class="btn btn default"> Search </button>
+							</div>
+						</div>
+
+						<div class="row" id="searchResults">
+					
+							<ul id="dishList">
+							</ul>
+				
+						</div>
+				
+					</div>
+			
+				</div>
+				<div id="view4" style="display:none;" class="col-md-9">
+					<div class="container-fluid">
+						<div class="row">
+							<div id="selected_Dish" class="col-md-6">
+								<h2 id="dishSelected"></h2>
+								<p id="dishSelectedImage" style="width:100%;"></p>
+								<p>Dish description</p>
+								<button class="btn btn-default" style="background-color:#ffba00;">  
+									<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to Selected Dish
+								</button>
+							</div>
+							<div id="ingredients" class="col-md-6" style="background-color:#fffa8c; border-left: 1px solid; border-bottom: 1px solid;">
+								<h3 style="margin-left:10px;">INGREDIENTS FOR <span id="numberOfGuests"></span> PEOPLE</h3>
+								<div class="row" style="padding-bottom: .9em;">
+									<div class="table-responsive" style="width:90%;margin-right:auto;margin-left:auto;">
+										<table class="table" id="dishSelectedIngredients" style="width:100%; height:100%; margin: 0; padding: 0;">
+										</table>
+										<table class="table" style="width:100%; height:100%; margin: 0; padding: 0;">
+											<tr>
+												<td style="width:750%;">
+												</td>
+												<td>
+													<button id="confirmDish" class="btn btn-default" 										style="background-color:#ffba00;margin-bottom:10px;">
+														Confirm Dish
+													</button>
+												</td>
+											</tr>							
+										</table>	
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h2>PREPARATION</h2>
+								<p id="dishSelectedDescription"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="view5" style="display:true;" class="col-md-12">
+			
+				  	<div class="row" style="height:70px;background-color:#ffdc9d;">
+						<div id="myDinner" class="col-md-5" style="margin-left: 60px;">
+							<h2>My Dinner: <span id="numberOfGuests"></span> people</h2>
+						</div>
+		
+						<div class="col-md-2 col-md-offset-4">
+							<button class="btn btn-default" style="background-color:#ffba00; margin-top: 20px">  
+								<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Go Back and Edit Dinner
+							</button>
+						</div>
+					</div>
+
+					<div class="row" style="margin-top:50px;">
+						<div class="col-md-8" style="text-align:right">
+							<ul id="menuList">
+							</ul>
+						</div>
+						<div id="totalPrice" class="col-md-2" style="margin-top: 205px;">Total: 
+							<p><span id="menuTotalPrice"></span> SEK</p>
+						</div>
+					</div>
+
+					<div class="row" style="text-align:center;margin-top:50px;">
+						<button class="btn btn-default" style="background-color:#ffba00;">Print Full Recipe</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
