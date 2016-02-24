@@ -408,13 +408,13 @@ var DinnerModel = function() {
 	// Observable Pattern for LAB3
 	
 	this.addObserver = function(observer) {
-		this.observables.push(observer);
+		observables.push(observer);
 	}
 	
 	this.notifyObservers = function(args) {
-		/*this.observables.forEach(function(element,index,array) {
+		observables.forEach(function(element,index,array) {
 			element(args);
-		});*/
+		})
 	}
 
 }
