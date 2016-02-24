@@ -413,7 +413,7 @@ var DinnerModel = function() {
 	
 	this.notifyObservers = function(args) {
 		/*this.observables.forEach(function(element,index,array) {
-			element(this,args);
+			element(args);
 		});*/
 	}
 

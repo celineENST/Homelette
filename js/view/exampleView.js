@@ -1,3 +1,5 @@
+function isNumber(obj) { return !isNaN(parseFloat(obj)) }
+
 //ExampleView Object constructor
 var ExampleView = function (container,model) {
  
@@ -17,23 +19,45 @@ var ExampleView = function (container,model) {
  this.menuTotalPrice = container.find("#menuTotalPrice");
  this.finalMenu = container.find("#finalMenu");
  
+ this.view1 = container.find("#view1");
+ this.container23456 = container.find("#container23456");
+ this.view2 = container.find("#view2");
+ this.view3 = container.find("#view3");
+ this.view4 = container.find("#view4");
+ this.view5 = container.find("#view5");
+ this.view6 = container.find("#view6");
+ 
 // Displaying
 
- // Number of guests
- this.numberOfGuests.html(model.getNumberOfGuests());
-
- // Dish selected
- this.dishSelected.html(model.getSelectedDish('main dish').name); // Pas sûr
- this.dishSelectedDescription.html(model.getSelectedDish('main dish').description); // Pas sûr
+ // Hide View 1 
+ this.hideView1 = function(args) {
+	 this.view1.style.display = "none";
+ }
  
- // Table of dishes in view 2 (dish cart table)
- var tableau = "";
- model.getFullMenu().forEach(function(element,index,array) {
-	 tableau += "<tr><td>" + element.name + "</td><td style=\"text-align: right;\">" + model.dishPrice(element) + " SEK</td></tr>";
- });
+ // Display Container 23456
+ this.displayContainer = function(args) {
+	 this.container23456.style.display = "true";
+ }
  
- tableau += "<tr id=\"totalPrice\"><td>Total Price: </td><td style=\"text-align: right;\">" + model.getTotalMenuPrice() + " SEK</td></tr>"
- this.dishCart.html(tableau);
+ // View 2
+ this.updateView2 = function(args) {
+	 if(isNumber(args)) {
+		 displayContainer(3);
+		 // View 2
+		 // Number of guests
+		 numberOfGuests.html(model.getNumberOfGuests());
+ 
+		 // Table of dishes in view 2 (dish cart table)
+		 var tableau = "";
+		 model.getFullMenu().forEach(function(element,index,array) {
+			 tableau += "<tr><td>" + element.name + "</td><td style=\"text-align: right;\">" + model.dishPrice(element) + " SEK</td></tr>";
+		 });
+ 
+		 tableau += "<tr id=\"totalPrice\"><td>Total Price: </td><td style=\"text-align: right;\">" + model.getTotalMenuPrice() + " SEK</td></tr>"
+		 this.dishCart.html(tableau);
+		 this.view2.style.display = "true";
+	 }
+ }
  
  // Result of search for dishes in view 3
  var liste="";
@@ -55,6 +79,10 @@ var ExampleView = function (container,model) {
  
  this.dishList.html(liste);
 
+ // Dish selected
+ this.dishSelected.html(model.getSelectedDish('main dish').name); // Pas sûr
+ this.dishSelectedDescription.html(model.getSelectedDish('main dish').description); // Pas sûr
+ 
  // Table of ingredients in view 4 (selected dish ingredients)
  var tableau2 = "";
  model.getSelectedDishIngredients().forEach(function(element,index,array) {
