@@ -71,7 +71,6 @@ var ExampleViewController = function (view, model) {
 	});
 		
 	var fromThreeToFour = function(event) {
-		console.log("clicked");
 		view.view3.attr("style","display:none;");
 		switch(event.data.id) {
 		case 1:
