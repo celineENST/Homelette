@@ -46,11 +46,14 @@ var ExampleView = function (container,model) {
 
 		// Table of dishes in view 2 (dish cart table)
 		var tableau = "";
+		var prix = 0;
 		model.getFullMenu().forEach(function(element,index,array) {
 		 tableau += "<tr><td>" + element.name + "</td><td style=\"text-align: right;\">" + model.dishPrice(element) + " SEK</td></tr>";
+		 prix +=model.dishPrice(element);
 		});
 
-		tableau += "<tr id=\"totalPrice\"><td>Total Price: </td><td style=\"text-align: right;\">" + model.getTotalMenuPrice() + " SEK</td></tr>"
+		prix = prix * model.getNumberOfGuests();
+		tableau += "<tr id=\"totalPrice\"><td>Total Price: </td><td style=\"text-align: right;\">" + prix + " SEK</td></tr>"
 		$(dishCart).html(tableau);
 	}
 
