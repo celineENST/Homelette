@@ -1,7 +1,8 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
  
-	var numberOfGuests = 5;
+ 	var selectedDish = "rien";
+	var numberOfGuests = 1;
 	var menu = [];
 	var observables = [];	// Liste de vues
 	var selectionType = 0;
@@ -27,13 +28,13 @@ var DinnerModel = function() {
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-		selectedDish = {};	// Global - Trois types
+		selectedDishForType = {};
 		menu.forEach(function(element,index,array){
 			if (element.type == type) {
-				selectedDish = element;	
+				selectedDishForType = element;	
 			}
 		});
-		return selectedDish;
+		return selectedDishForType;
 	}
 
 	//Returns all the dishes on the menu.
@@ -65,22 +66,24 @@ var DinnerModel = function() {
 
 	//Returns all ingredients for the dish selected
 	this.getSelectedDishIngredients = function() {
-		var ingredientsList = [];
-		var ingredientsName = [];
+		if (selectedDish != "rien") {
+			var ingredientsList = [];
+			var ingredientsName = [];
 		
-			for (var i = 0 ; i < selectedDish.ingredients.length ; i++) {
+				for (var i = 0 ; i < selectedDish.ingredients.length ; i++) {
 				
-				var currentIngredient = selectedDish.ingredients[i];
-				var found = $.inArray(currentIngredient.name,ingredientsName);		//If already in list, returns the index. Else, returns -1
+					var currentIngredient = selectedDish.ingredients[i];
+					var found = $.inArray(currentIngredient.name,ingredientsName);		//If already in list, returns the index. Else, returns -1
 				
-				if (found==-1) {		//If not already in list, then add the whole ingredient element
-					ingredientsName.push(currentIngredient.name);
-					ingredientsList.push(selectedDish.ingredients[i]);
-				} else {		//If already in list; only add value to the quantity
-					ingredientsList[found].quantity += currentIngredient.quantity;
+					if (found==-1) {		//If not already in list, then add the whole ingredient element
+						ingredientsName.push(currentIngredient.name);
+						ingredientsList.push(selectedDish.ingredients[i]);
+					} else {		//If already in list; only add value to the quantity
+						ingredientsList[found].quantity += currentIngredient.quantity;
+					}
 				}
-			}
-		return ingredientsList;
+			return ingredientsList;
+		}
 	}
 
 
@@ -426,5 +429,14 @@ var DinnerModel = function() {
 			element(args);
 		})
 	}
-
+	
+	this.setSelectedDish = function(id) {
+		selectedDish = this.getDish(id);
+		this.notifyObservers(selectedDish);
+	}
+	
+	this.getSelectedDish = function() {
+		return selectedDish;
+	}
+	
 }

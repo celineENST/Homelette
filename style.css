@@ -22,6 +22,11 @@ ul#dishList, #menuList {
 	padding: 0em;
 }
  
+.imgButton {
+	margin: 0;
+	padding: 0;
+	border: 0;
+} 
 html,body {
 	height: 100%;
 }

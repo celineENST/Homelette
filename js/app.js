@@ -1,9 +1,6 @@
 $(function() {
 	//We instantiate our model
 	var model = new DinnerModel();
-
-	// Testing guests number
-	model.setNumberOfGuests(5);
 		
 	// Testing adding dish
 	model.addDishToMenu(1);

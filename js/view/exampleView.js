@@ -25,6 +25,8 @@ var ExampleView = function (container,model) {
 	this.goBackEdit5 = container.find("#goBackEdit5");
 	this.goBackEdit6 = container.find("#goBackEdit6");
 	this.dropDownMenu = container.find(".dropdown-menu");
+	this.goBackSelect = container.find("#backDishSelection");
+	this.confirmDish = container.find("#confirmDish");
 
 	// Getting the views divs
 	this.view1 = container.find("#view1");
@@ -63,39 +65,37 @@ var ExampleView = function (container,model) {
 	this.updateView3 = function(args) {
 		// Result of search for dishes in view 3
 		var liste="";
-		console.log(model.getSelectionType());
-
 		switch (model.getSelectionType()) {
 			case 0: 
 				$.each(model.getAllDishes("starter"), function(index,element) {
-				liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-				 + element.description + "</span></li>";
+		    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
+		    		 + element.description + "</span></li>";
 				});
 				$.each(model.getAllDishes("main dish"), function(index,element) {
-				liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-				 + element.description + "</span></li>";
+		    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
+		    		 + element.description + "</span></li>";
 				});
 				$.each(model.getAllDishes("dessert"), function(index,element) {
-				liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-				 + element.description + "</span></li>";
+		    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
+		    		 + element.description + "</span></li>";
 				});
 				break;
 			case 1:
 				$.each(model.getAllDishes("starter"), function(index,element) {
-				liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-				 + element.description + "</span></li>";
+		    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
+		    		 + element.description + "</span></li>";
 				});
 				break;
 			case 2:
 				$.each(model.getAllDishes("main dish"), function(index,element) {
-				liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-				 + element.description + "</span></li>";
+		    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
+		    		 + element.description + "</span></li>";
 				});
 				break;
 			case 3:
 				$.each(model.getAllDishes("dessert"), function(index,element) {
-				liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-				 + element.description + "</span></li>";
+		    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
+		    		 + element.description + "</span></li>";
 				});
 				break;
 		}
@@ -103,29 +103,31 @@ var ExampleView = function (container,model) {
 	}
 
 	this.updateView4 = function(args) {
-		// Dish selected
-		$(dishSelected).html(model.getSelectedDish('main dish').name); 
-		$(dishSelectedDescription).html(model.getSelectedDish('main dish').description);
+		if (model.getSelectedDish() != "rien") {
+			// Dish selected
+			$(dishSelected).html(model.getSelectedDish('main dish').name); 
+			$(dishSelectedDescription).html(model.getSelectedDish('main dish').description);
 
-		// Number of guests
-		$(numberOfGuests).html(model.getNumberOfGuests());
+			// Number of guests
+			$(numberOfGuests).html(model.getNumberOfGuests());
 
-		// Table of ingredients in view 4 (selected dish ingredients)
-		var tableau2 = "";
-		model.getSelectedDishIngredients().forEach(function(element,index,array) {
-		tableau2 += "<tr><td style=\"text-align: right;\">" + Math.round(element.quantity * model.getNumberOfGuests()) + element.unit +"</td><td style=\"text-align: left;\">" 
-		+ element.name + "</td><td style=\"text-align: left;\">" 
-		+ " SEK</td><td style=\"text-align: right;\">" 
-		+ element.price* model.getNumberOfGuests() +"</td></tr>";
-		});
+			// Table of ingredients in view 4 (selected dish ingredients)
+			var tableau2 = "";
+			model.getSelectedDishIngredients().forEach(function(element,index,array) {
+			tableau2 += "<tr><td style=\"text-align: right;\">" + Math.round(element.quantity * model.getNumberOfGuests()) + element.unit +"</td><td style=\"text-align: left;\">" 
+			+ element.name + "</td><td style=\"text-align: left;\">" 
+			+ " SEK</td><td style=\"text-align: right;\">" 
+			+ element.price* model.getNumberOfGuests() +"</td></tr>";
+			});
 
-		tableau2 += "<tr id=\"totalPrice\"><td></td><td style=\"text-align: right;\">Total Price: </td><td>SEK </td><td style=\"text-align: right;\">" + model.dishPrice(model.getSelectedDish('main dish')) * model.getNumberOfGuests() + "</td></tr>"
-		$(dishSelectedIngredients).html(tableau2);
+			tableau2 += "<tr id=\"totalPrice\"><td></td><td style=\"text-align: right;\">Total Price: </td><td>SEK </td><td style=\"text-align: right;\">" + model.dishPrice(model.getSelectedDish('main dish')) * model.getNumberOfGuests() + "</td></tr>"
+			$(dishSelectedIngredients).html(tableau2);
 
-		// View 4 Selected dish Image
-		var im = "";
-		im = "<img src=\"images/" + model.getSelectedDish('main dish').image + "\"></img>"; 
-		$(dishSelectedImage).html(im);
+			// View 4 Selected dish Image
+			var im = "";
+			im = "<img src=\"images/" + model.getSelectedDish('main dish').image + "\"></img>"; // Pas sûr 
+			$(dishSelectedImage).html(im);
+		}
 	}
 
 	this.updateView5 = function(args) {
