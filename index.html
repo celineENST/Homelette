@@ -14,14 +14,14 @@
   <body>
 	  
 <div id="exampleView">
-	<div id="view1" style="display:true;">
+	<div id="view1" style="display:none;">
 	  	<header style="opacity: 0.5; background-color: #ffdc9d;">
 			<h1>HOMELETTE 
 				<small>From the best chefs in the world directly into your kitchen</small>
 			</h1>
 	  	</header>
 		<div class="container-fluid">
-			<div class="row" tyle="margin-top: 6em; display:none">
+			<div class="row" tyle="margin-top: 6em; display:true">
 				<div class="col-md-7" style="background-color: #FFFFFF; opacity: 0.7; padding: 2em;">
 					<div class="container-fluid">
 						<div class="row" style="border-bottom: 2px solid;">
@@ -45,12 +45,12 @@
 			</div>
 		</div>
 	</div>
-	<div id="container23456" style="display:none;">
+	<div id="container23456" style="display:true;">
 	  	<header><h1>HOMELETTE <small>From the best chefs in the world directly into your kitchen</small></h1>
 	  	</header>
 		<div class="container-fluid">
 			<div class="row">
-				<div id="view2" style="display:none;" class="col-md-3">
+				<div id="view2" style="display:true;" class="col-md-3">
 			
 						<div class="container-fluid">
 							<div class="row">
@@ -59,26 +59,11 @@
 			
 							<div class="row" style="padding-bottom: .9em;">
 								<div class="col-md-12">
-									People:
-									<span class="dropdown">
-									<button class="btn btn-default dropdown-toggle" type="button" id="dropDownPeople" data-toggle="dropdown" 
-									style="min-width: 0px;">
-										<span id="numberOfGuests">5</span>
-										<span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu" style="min-width: 0px;" aria-labelledby="dropdownPeople">
-										<li><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">6</a></li>
-										<li><a href="#">7</a></li>
-										<li><a href="#">8</a></li>
-										<li><a href="#">9</a></li>
-										<li><a href="#">10</a></li>
-									</ul>
-									</span>
+									People: <span id="numberOfGuests"></span>
+
+									<button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+									<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+								
 								</div>	
 							</div>
 			
@@ -105,7 +90,7 @@
 						</div>
 			
 				</div>
-				<div id="view3" style="display:none;" class="col-md-9">
+				<div id="view3" style="display:true;" class="col-md-9">
 			
 					<div class="container-fluid">
 							
@@ -159,7 +144,7 @@
 								</button>
 							</div>
 							<div id="ingredients" class="col-md-6" style="background-color:#fffa8c; border-left: 1px solid; border-bottom: 1px solid;">
-								<h3 style="margin-left:10px;">INGREDIENTS FOR <span id="numberOfGuests"></span> PEOPLE</h3>
+								<h3 style="margin-left:10px;">INGREDIENTS FOR <span id="numberOfGuests">1</span> PEOPLE</h3>
 								<div class="row" style="padding-bottom: .9em;">
 									<div class="table-responsive" style="width:90%;margin-right:auto;margin-left:auto;">
 										<table class="table" id="dishSelectedIngredients" style="width:100%; height:100%; margin: 0; padding: 0;">
@@ -195,7 +180,7 @@
 						</div>
 		
 						<div class="col-md-2 col-md-offset-4">
-							<button class="btn btn-default" style="background-color:#ffba00; margin-top: 20px">  
+							<button id="goBackEdit5" class="btn btn-default" style="background-color:#ffba00; margin-top: 20px">  
 								<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Go Back and Edit Dinner
 							</button>
 						</div>
@@ -212,15 +197,15 @@
 					</div>
 
 					<div class="row" style="text-align:center;margin-top:50px;">
-						<button class="btn btn-default" style="background-color:#ffba00;">Print Full Recipe</button>
+						<button id="print" class="btn btn-default" style="background-color:#ffba00;">Print Full Recipe</button>
 					</div>
 				</div>
 				<div id="view6" style="display:none;" class="col-md-12">
 
 				  	<div class="row" style="height:70px;background-color:#ffdc9d;">
-						<div id="myDinner" class="col-md-5" style="margin-left: 60px;"><h2>My Dinner: <span id="numberOfGuests"></span> people</h2></div>
+						<div id="myDinner" class="col-md-5" style="margin-left: 60px;"><h2>My Dinner: <span id="numberOfGuests">3</span> people</h2></div>
 						<div class="col-md-2 col-md-offset-4">
-						<button class="btn btn-default" style="background-color:#ffba00; margin-top: 20px">  
+						<button id="goBackEdit6" class="btn btn-default" style="background-color:#ffba00; margin-top: 20px">  
 							<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Go Back and Edit Dinner
 						</button>
 						</div>
@@ -247,6 +232,6 @@
 	<script src="js/app.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
 	<script src="js/view/exampleView.js"></script>
-	<!--	<script src="js/view/exampleViewController.js"></script> -->
+	<script src="js/view/exampleViewController.js"></script>
   </body>
 </html>
