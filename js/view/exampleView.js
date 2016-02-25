@@ -118,7 +118,7 @@ var ExampleView = function (container,model) {
 		+ model.dishPrice(element) + " SEK</li>";
 		prix +=model.dishPrice(element);
 		});
-		this.menuList.html(liste2);
+		$(menuList).html(liste2);
 
 		prix = prix * model.getNumberOfGuests();
 		$(menuTotalPrice).html(prix);
@@ -146,6 +146,11 @@ var ExampleView = function (container,model) {
 	model.addObserver(this.updateView5);
 	model.addObserver(this.updateView6); 
 
+	this.updateView2();
+	this.updateView3();
+	this.updateView4();
+	this.updateView5();
+	this.updateView6();
 }
 
 
