@@ -24,6 +24,7 @@ var ExampleView = function (container,model) {
 	this.print = container.find("#print");
 	this.goBackEdit5 = container.find("#goBackEdit5");
 	this.goBackEdit6 = container.find("#goBackEdit6");
+	this.dropDownMenu = container.find(".dropdown-menu");
 
 	// Getting the views divs
 	this.view1 = container.find("#view1");
@@ -35,6 +36,7 @@ var ExampleView = function (container,model) {
 	this.view6 = container.find("#view6");
 
 	this.numberOfGuests.html(model.getNumberOfGuests());
+
 	// Displaying
 
 	// View 2
@@ -61,22 +63,42 @@ var ExampleView = function (container,model) {
 	this.updateView3 = function(args) {
 		// Result of search for dishes in view 3
 		var liste="";
+		console.log(model.getSelectionType());
 
-		$.each(model.getAllDishes("starter"), function(index,element) {
-		liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-		 + element.description + "</span></li>";
-		});
-
-		$.each(model.getAllDishes("main dish"), function(index,element) {
-		liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-		 + element.description + "</span></li>";
-		});
-
-		$.each(model.getAllDishes("dessert"), function(index,element) {
-		liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-		 + element.description + "</span></li>";
-		});
-
+		switch (model.getSelectionType()) {
+			case 0: 
+				$.each(model.getAllDishes("starter"), function(index,element) {
+				liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
+				 + element.description + "</span></li>";
+				});
+				$.each(model.getAllDishes("main dish"), function(index,element) {
+				liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
+				 + element.description + "</span></li>";
+				});
+				$.each(model.getAllDishes("dessert"), function(index,element) {
+				liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
+				 + element.description + "</span></li>";
+				});
+				break;
+			case 1:
+				$.each(model.getAllDishes("starter"), function(index,element) {
+				liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
+				 + element.description + "</span></li>";
+				});
+				break;
+			case 2:
+				$.each(model.getAllDishes("main dish"), function(index,element) {
+				liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
+				 + element.description + "</span></li>";
+				});
+				break;
+			case 3:
+				$.each(model.getAllDishes("dessert"), function(index,element) {
+				liste += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
+				 + element.description + "</span></li>";
+				});
+				break;
+		}
 		$(dishList).html(liste);
 	}
 
@@ -102,7 +124,7 @@ var ExampleView = function (container,model) {
 
 		// View 4 Selected dish Image
 		var im = "";
-		im = "<img src=\"images/" + model.getSelectedDish('main dish').image + "\"></img>"; // Pas sûr 
+		im = "<img src=\"images/" + model.getSelectedDish('main dish').image + "\"></img>"; 
 		$(dishSelectedImage).html(im);
 	}
 

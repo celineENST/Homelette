@@ -4,6 +4,7 @@ var DinnerModel = function() {
 	var numberOfGuests = 5;
 	var menu = [];
 	var observables = [];	// Liste de vues
+	var selectionType = 0;
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;
@@ -13,6 +14,15 @@ var DinnerModel = function() {
 	// should return 
 	this.getNumberOfGuests = function() {
 		return numberOfGuests;
+	}
+
+	this.setSelectionType = function(num) {
+		selectionType = num;
+		this.notifyObservers(num);
+	}
+
+	this.getSelectionType = function() {
+		return selectionType;
 	}
 
 	//Returns the dish that is on the menu for selected type 

@@ -40,5 +40,24 @@ var ExampleViewController = function (view, model) {
 		view.view2.attr("style","display:true;");
 		view.view3.attr("style","display:true;");
 	})
+
+	view.dropDownMenu.on('click', 'li a', function(){
+		switch (this.id){
+			case("allDishes"):
+				model.setSelectionType(0);
+				break;
+			case("starter"):
+				model.setSelectionType(1);
+				break;
+			case("dish"):
+				model.setSelectionType(2);
+				break;
+			case("dessert"):
+				model.setSelectionType(3);
+				break;
+		}
+  			
+	});
+
 }
 
