@@ -54,7 +54,7 @@ var ExampleView = function (container,model) {
 		var tableau = "";
 		var prix = 0;
 		model.getFullMenu().forEach(function(element,index,array) {
-		 tableau += "<tr><td>" + element.name + "</td><td style=\"text-align: right;\">" + model.dishPrice(element) + " SEK</td></tr>";
+		 tableau += "<tr><td>" + element.name + "</td><td style=\"text-align: right;\">" + model.dishPrice(element)* model.getNumberOfGuests() + " SEK</td></tr>";
 		 prix +=model.dishPrice(element);
 		});
 
@@ -166,7 +166,7 @@ var ExampleView = function (container,model) {
 		var prix = 0;
 		model.getFullMenu().forEach(function(element,index,array) {
 		liste2 += "<li><img src=\"images/" + element.image + "\"></img><span class='dishListName'>" + element.name + "</span><br />" 
-		+ model.dishPrice(element) + " SEK</li>";
+		+ model.dishPrice(element)* model.getNumberOfGuests() + " SEK</li>";
 		prix +=model.dishPrice(element);
 		});
 		$(menuList).html(liste2);
