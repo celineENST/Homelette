@@ -22,6 +22,8 @@ var DinnerModel = function() {
 		this.notifyObservers(num);
 	}
 
+	
+
 	this.getSelectionType = function() {
 		return selectionType;
 	}

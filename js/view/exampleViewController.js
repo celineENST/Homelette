@@ -69,6 +69,9 @@ var ExampleViewController = function (view, model) {
 		}
   			
 	});
+	
+	
+	view.searchButton.click(function() {model.setSelectionType(4);});
 		
 	var fromThreeToFour = function(event) {
 		view.view3.attr("style","display:none;");
@@ -115,7 +118,7 @@ var ExampleViewController = function (view, model) {
      $('body').on('click', '#dish100', {id:100},fromThreeToFour);
      $('body').on('click', '#dish101', {id:101},fromThreeToFour);
      $('body').on('click', '#dish102', {id:102},fromThreeToFour);
-     $('body').on('click', '#dish102', {id:103},fromThreeToFour);
+     $('body').on('click', '#dish103', {id:103},fromThreeToFour);
      $('body').on('click', '#dish200', {id:200},fromThreeToFour);
      $('body').on('click', '#dish201', {id:201},fromThreeToFour);
      $('body').on('click', '#dish202', {id:202},fromThreeToFour);
