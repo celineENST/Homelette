@@ -5,7 +5,7 @@ var DinnerModel = function() {
 	var numberOfGuests = 1;
 	var menu = [];
 	var observables = [];	// Liste de vues
-	var selectionType = 0;
+	var selectionType = "allDishes";
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;
@@ -17,12 +17,14 @@ var DinnerModel = function() {
 		return numberOfGuests;
 	}
 
-	this.setSelectionType = function(num) {
-		selectionType = num;
-		this.notifyObservers(num);
+	this.setSelectionType = function(string) {
+		selectionType = string;
+		this.notifyObservers(string);
 	}
 
-	
+	this.getWholeList = function() {
+		return $(dishes);
+	}
 
 	this.getSelectionType = function() {
 		return selectionType;
@@ -131,22 +133,42 @@ var DinnerModel = function() {
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (type,filter) {
-	  return $(dishes).filter(function(index,dish) {
-		var found = true;
-		if(filter){
-			found = false;
-			$.each(dish.ingredients,function(index,ingredient) {
-				if(ingredient.name.indexOf(filter)!=-1) {
-					found = true;
-				}
-			});
-			if(dish.name.indexOf(filter) != -1)
-			{
-				found = true;
+		if (selectionType == "allDishes") {
+			if (filter) {
+				return $(dishes).filter(function(index,dish) {
+					var found = false;
+		   			$.each(dish.ingredients,function(index,ingredient) {
+		   				if(ingredient.name.indexOf(filter)!=-1) {
+		   					found = true;
+		   				}
+		   			});
+		   			if(dish.name.indexOf(filter) != -1)
+		   			{
+		   				found = true;
+		   			}
+					return found;					
+				});
+			} else {
+				return $(dishes);
 			}
+		} else {
+	   	  return $(dishes).filter(function(index,dish) {
+	   		var found = true;
+	   		if(filter){
+	   			found = false;
+	   			$.each(dish.ingredients,function(index,ingredient) {
+	   				if(ingredient.name.indexOf(filter)!=-1) {
+	   					found = true;
+	   				}
+	   			});
+	   			if(dish.name.indexOf(filter) != -1)
+	   			{
+	   				found = true;
+	   			}
+	   		}
+	   	  	return dish.type == type && found;
+	   	  });		
 		}
-	  	return dish.type == type && found;
-	  });	
 	}
 
 	// By the lab

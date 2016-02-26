@@ -67,65 +67,12 @@ var ExampleView = function (container,model) {
 	this.updateView3 = function(args) {
 		// Result of search for dishes in view 3
 		var liste="";
-		switch (model.getSelectionType()) {
-			case 0: 
-				$.each(model.getAllDishes("starter"), function(index,element) {
-		    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-		    		 + element.description + "</span></li>";
-				});
-				$.each(model.getAllDishes("main dish"), function(index,element) {
-		    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-		    		 + element.description + "</span></li>";
-				});
-				$.each(model.getAllDishes("dessert"), function(index,element) {
-		    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-		    		 + element.description + "</span></li>";
-				});
-				break;
-			case 1:
-				$.each(model.getAllDishes("starter"), function(index,element) {
-		    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-		    		 + element.description + "</span></li>";
-				});
-				break;
-			case 2:
-				$.each(model.getAllDishes("main dish"), function(index,element) {
-		    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-		    		 + element.description + "</span></li>";
-				});
-				break;
-			case 3:
-				$.each(model.getAllDishes("dessert"), function(index,element) {
-		    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-		    		 + element.description + "</span></li>";
-				});
-				break;
-				// cas 4 : on ne choisit qu'un plat par keyword. (recherche)
-				// un seul plat, celui qu'on a selectionné
-			case 4:
-				if (model.getAllDishes("starter",$(searchInput).val())!=null) {
-					console.log($(searchInput).val());
-					$.each(model.getAllDishes("starter",$(searchInput).val()), function(index,element) {
-			    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-			    		 + element.description + "</span></li>";
-					});
-				}
-				if (model.getAllDishes("main dish",$(searchInput).val())!=null) {
-					console.log($(searchInput).val());
-					$.each(model.getAllDishes("main dish",$(searchInput).val()), function(index,element) {
-			    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-			    		 + element.description + "</span></li>";
-					});
-				}
-				if (model.getAllDishes("dessert",$(searchInput).val())!=null) {
-					console.log($(searchInput).val());
-					$.each(model.getAllDishes("dessert",$(searchInput).val()), function(index,element) {
-			    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
-			    		 + element.description + "</span></li>";
-					});
-				}
-				break;
-		}
+				
+		$.each(model.getAllDishes(model.getSelectionType(),$(searchInput).val()), function(index,element) {
+    		liste += "<li><button class=\"imgButton\" id=\"dish" + element.id + "\"><img src=\"images/" + element.image + "\"></img></button><span class='dishListName'>" + element.name + "</span><br /><span class='dishListDescription'>" 
+    		 + element.description + "</span></li>";
+		});
+			
 		$(dishList).html(liste);
 	}
 

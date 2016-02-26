@@ -53,25 +53,13 @@ var ExampleViewController = function (view, model) {
 		model.addDishToMenu(model.getSelectedDish().id);
 	})
 	view.dropDownMenu.on('click', 'li a', function(){
-		switch (this.id){
-			case("allDishes"):
-				model.setSelectionType(0);
-				break;
-			case("starter"):
-				model.setSelectionType(1);
-				break;
-			case("dish"):
-				model.setSelectionType(2);
-				break;
-			case("dessert"):
-				model.setSelectionType(3);
-				break;
-		}
-  			
+		model.setSelectionType(this.id);  			
 	});
 	
 	
-	view.searchButton.click(function() {model.setSelectionType(4);});
+	view.searchButton.click(function() {
+		model.setSelectionType("allDishes");
+		view.searchInput.val("");});
 		
 	var fromThreeToFour = function(event) {
 		view.view3.attr("style","display:none;");
